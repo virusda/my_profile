@@ -1,0 +1,334 @@
+<title>Johyuk Choi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Gothic+A1:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #f6f7f8;
+    --surface: #ffffff;
+    --ink: #131a21;
+    --ink-2: #4a5764;
+    --ink-3: #7c8894;
+    --rule: #dfe3e7;
+    --rule-soft: #ebeef1;
+    --accent: #146b5e;
+    --accent-soft: #e3f0ed;
+    --todo-line: #c2a24a;
+    --todo-bg: #fbf5e6;
+    --todo-ink: #7a5f14;
+
+    --sans: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    --body: "Gothic A1", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    --mono: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #10161b;
+      --surface: #161e25;
+      --ink: #e8edf1;
+      --ink-2: #a3b0bc;
+      --ink-3: #6f7e8b;
+      --rule: #26313a;
+      --rule-soft: #1d262e;
+      --accent: #4fd1b5;
+      --accent-soft: #16302c;
+      --todo-line: #8a7434;
+      --todo-bg: #221d10;
+      --todo-ink: #d7bd74;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #10161b;
+    --surface: #161e25;
+    --ink: #e8edf1;
+    --ink-2: #a3b0bc;
+    --ink-3: #6f7e8b;
+    --rule: #26313a;
+    --rule-soft: #1d262e;
+    --accent: #4fd1b5;
+    --accent-soft: #16302c;
+    --todo-line: #8a7434;
+    --todo-bg: #221d10;
+    --todo-ink: #d7bd74;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 56px 28px 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+  }
+
+  /* ---- draft notice: 내용 확정되면 이 블록 삭제 ---- */
+  .draft {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    padding: 12px 16px;
+    background: var(--todo-bg);
+    border-left: 3px solid var(--todo-line);
+    color: var(--todo-ink);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .draft b { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+
+  /* ---- header ---- */
+  header { display: flex; flex-direction: column; gap: 18px; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  h1 {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(34px, 6vw, 52px);
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    text-wrap: balance;
+    margin: 0;
+  }
+  h1 .ko { display: block; font-size: .46em; font-weight: 500; color: var(--ink-2); letter-spacing: 0; margin-top: 10px; }
+
+  .headline {
+    font-family: var(--sans);
+    font-size: clamp(17px, 2.4vw, 20px);
+    font-weight: 500;
+    color: var(--ink-2);
+    max-width: 34em;
+    margin: 0;
+  }
+
+  .facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--ink-2);
+  }
+  .facts span { display: inline-flex; align-items: center; gap: 7px; }
+  .facts .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex: none; }
+  .facts a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  .facts a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* ---- spec-sheet rows ---- */
+  section { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 0 32px; align-items: start; }
+  section + section { border-top: 1px solid var(--rule-soft); padding-top: 36px; }
+
+  h2 {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 6px 0 0;
+  }
+
+  .body-col { display: flex; flex-direction: column; gap: 18px; max-width: 62ch; }
+  .body-col p { margin: 0; color: var(--ink-2); }
+  .body-col p.lead { color: var(--ink); font-size: 16.5px; }
+
+  /* ---- timeline: 노드-라인 (단말 → 서버 연결 모티브) ---- */
+  .track { display: flex; flex-direction: column; gap: 26px; margin: 0; padding: 0; list-style: none; }
+  .track li { position: relative; padding-left: 26px; }
+  .track li::before {
+    content: "";
+    position: absolute; left: 0; top: 9px;
+    width: 9px; height: 9px;
+    border: 2px solid var(--accent);
+    background: var(--bg);
+    border-radius: 50%;
+  }
+  .track li:not(:last-child)::after {
+    content: "";
+    position: absolute; left: 4px; top: 22px; bottom: -26px;
+    width: 1px; background: var(--rule);
+  }
+  .track h3 {
+    font-family: var(--sans);
+    font-size: 18px; font-weight: 600;
+    margin: 0 0 2px;
+    letter-spacing: -.01em;
+  }
+  .track .org-note { font-size: 13px; color: var(--ink-3); margin: 0 0 8px; }
+  .track .when { font-family: var(--mono); font-size: 12px; color: var(--ink-3); }
+
+  /* ---- 미확인 항목 ---- */
+  .todo {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 3px 10px;
+    border: 1px dashed var(--todo-line);
+    background: var(--todo-bg);
+    color: var(--todo-ink);
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .todo::before { content: "입력 필요"; font-size: 9.5px; letter-spacing: .1em; opacity: .85; }
+  .todo-block { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding-top: 20px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--ink-3);
+    display: flex; flex-wrap: wrap; gap: 6px 18px;
+  }
+  footer a { color: var(--ink-3); }
+
+  a:focus-visible, .facts a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  @media (max-width: 640px) {
+    .page { padding: 36px 20px 72px; gap: 34px; }
+    section { grid-template-columns: 1fr; gap: 12px; }
+    section + section { padding-top: 28px; }
+    h2 { margin-top: 0; }
+  }
+
+  @media print {
+    body { background: #fff; color: #000; }
+    .draft { display: none; }
+    .page { padding: 0; max-width: none; }
+  }
+</style>
+
+<div class="page">
+
+  <!-- 내용 확정 후 이 draft 블록 삭제 -->
+  <div class="draft">
+    <b>Draft</b>
+    <span>LinkedIn 공개 페이지에서 확인된 항목만 반영했습니다. 직책·재직기간·전공·연락처는 비로그인 상태에서 가려져 있어 <em>입력 필요</em>로 표시했습니다.</span>
+  </div>
+
+  <header>
+    <div class="eyebrow">홈네트워크 · 프로젝트 관리</div>
+    <h1>Johyuk Choi<span class="ko"><span class="todo">한글 이름</span></span></h1>
+    <p class="headline">공동주택 홈네트워크 분야에서 18년간 프로젝트를 관리해 왔습니다.</p>
+    <div class="facts">
+      <span><i class="dot"></i>HDC LABS (HDC랩스)</span>
+      <span><i class="dot"></i>서울 서초구</span>
+      <span><i class="dot"></i><a href="https://kr.linkedin.com/in/johyuk-choi-5637921b6" target="_blank" rel="noopener">linkedin.com/in/johyuk-choi</a></span>
+    </div>
+  </header>
+
+  <section>
+    <h2>소개</h2>
+    <div class="body-col">
+      <p class="lead">18년차 홈네트워크 프로젝트 관리자입니다.</p>
+      <p>세대 단말부터 단지 서버, 공용부 연동까지 이어지는 홈네트워크 시스템을 현장에 안착시키는 일을 해왕습니다.</p>
+      <div class="todo-block">
+        <span class="todo">담당해 온 프로젝트 규모 · 역할 범위 2~3문장</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>경력</h2>
+    <div class="body-col">
+      <ul class="track">
+        <li>
+          <h3>HDC LABS</h3>
+          <p class="org-note">HDC랩스 · 서울 서초구</p>
+          <div class="todo-block">
+            <span class="todo">직책</span>
+            <span class="todo">재직 기간</span>
+            <span class="todo">담당 업무</span>
+          </div>
+        </li>
+        <li>
+          <p class="when">이전 경력</p>
+          <div class="todo-block">
+            <span class="todo">회사 · 직책 · 기간</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>주요 프로젝트</h2>
+    <div class="body-col">
+      <div class="todo-block">
+        <span class="todo">프로젝트명 · 연도 · 규모 · 맡은 역할 · 결과</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>전문 분야</h2>
+    <div class="body-col">
+      <div class="todo-block">
+        <span class="todo">예: 월패드 · 단지서버 · IoT 연동 · 공정 관리 · 협력사 관리</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>학력</h2>
+    <div class="body-col">
+      <ul class="track">
+        <li>
+          <h3>서울과학기술대학교</h3>
+          <div class="todo-block">
+            <span class="todo">전공</span>
+            <span class="todo">재학 기간</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>자격 · 교육</h2>
+    <div class="body-col">
+      <div class="todo-block">
+        <span class="todo">보유 자격증 · 이수 교육</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>연락</h2>
+    <div class="body-col">
+      <p>연락은 LinkedIn 메시지로 받습니다.</p>
+      <div class="facts" style="border-top:none;padding-top:0">
+        <span><i class="dot"></i><a href="https://kr.linkedin.com/in/johyuk-choi-5637921b6" target="_blank" rel="noopener">LinkedIn</a></span>
+      </div>
+      <div class="todo-block">
+        <span class="todo">공개할 이메일 (원할 경우)</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Johyuk Choi</span>
+    <span>출처: LinkedIn 공개 프로필</span>
+  </footer>
+
+</div>
